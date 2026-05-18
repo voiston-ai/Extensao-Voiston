@@ -23,8 +23,17 @@ jobs:
           git clone https://${{ secrets.REPO_CLONE }}@github.com/voiston-ai/voiston-extension
           
       - name: Build project
+        env:
+          # Pull the secret from GitHub Actions into the runner environment
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_READ_TOKEN }}
         run: |
           cd voiston-extension/chrome/src
+          
+          # Configure the scope to point to GitHub Packages
+          echo "@voiston-ai:registry=https://npm.pkg.github.com" > .npmrc
+          # Pass the authentication token
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+          
           npm install
           npm run build
           
