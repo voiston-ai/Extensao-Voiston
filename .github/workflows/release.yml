@@ -26,6 +26,7 @@ jobs:
         env:
           # Pull the secret from GitHub Actions into the runner environment
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_READ_TOKEN }}
+          FEEGOW_TOKEN: ${{ secrets.FEEGOW_TOKEN }}
         run: |
           cd voiston-extension/chrome/src
           
