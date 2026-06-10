@@ -27,6 +27,8 @@ jobs:
           # Pull the secret from GitHub Actions into the runner environment
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_READ_TOKEN }}
           FEEGOW_TOKEN: ${{ secrets.FEEGOW_TOKEN }}
+          SANTA_CRUZ_AUTHORIZATION: ${{ secrets.SANTA_CRUZ_AUTHORIZATION }}
+          SANTA_CRUZ_CLIENT: ${{ secrets.SANTA_CRUZ_CLIENT }}
         run: |
           cd voiston-extension/chrome/src
           
